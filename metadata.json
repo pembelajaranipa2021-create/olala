@@ -1,7 +1,9 @@
 {
   "name": "prototipe game amil piade",
   "description": "Game edukasi kuis interaktif dan simulasi menghitung zakat bertema petualangan ala Jutawan untuk anak-anak dengan fitur multiplayer real-time dan papan peringkat persesi.",
-  "requestFramePermissions": [],
+  "requestFramePermissions": [
+    "camera"
+  ],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
   ]

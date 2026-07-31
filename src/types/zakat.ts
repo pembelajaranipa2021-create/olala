@@ -75,7 +75,7 @@ export interface RoomState {
   code: string;
   name: string;
   hostId: string;
-  gameType: 'millionaire' | 'adventure';
+  gameType: 'millionaire' | 'adventure' | 'interactive_quiz';
   status: RoomStatus;
   currentQuestionIndex: number; // 0 to 14
   questionStartTime: number;

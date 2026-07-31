@@ -506,6 +506,39 @@ wss.on('connection', (ws: ExtendedWebSocket) => {
           break;
         }
 
+        case 'INTERACTIVE_QUIZ_SYNC': {
+          const { roomId, playerId } = ws;
+          if (!roomId || !playerId || !rooms[roomId]) return;
+          const room = rooms[roomId];
+          const player = room.players[playerId];
+          if (!player) return;
+
+          const { score, currentQIdx, isEliminated } = payload;
+          if (!room.adventurePlayers) room.adventurePlayers = []; // we can reuse adventurePlayers or create a new array
+          
+          let iqPlayer = room.adventurePlayers.find(p => p.id === playerId);
+          if (!iqPlayer) {
+            iqPlayer = { id: playerId, name: player.name, avatar: player.avatar };
+            room.adventurePlayers.push(iqPlayer);
+          }
+          iqPlayer.score = score;
+          iqPlayer.currentQIdx = currentQIdx;
+          iqPlayer.isEliminated = isEliminated;
+          
+          if (score !== undefined) {
+            player.score = score;
+          }
+          if (isEliminated) {
+             player.isEliminated = true;
+          }
+
+          broadcastToRoom(roomId, {
+            type: 'ROOM_UPDATE',
+            payload: getCleanRoomState(room)
+          });
+          break;
+        }
+
         case 'ADVENTURE_SYNC': {
           const { roomId, playerId } = ws;
           if (!roomId || !playerId || !rooms[roomId]) return;

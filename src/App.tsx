@@ -10,9 +10,10 @@ import { LifelineModal } from './components/LifelineModal';
 import { CertificateModal } from './components/CertificateModal';
 import { LearningHubModal } from './components/LearningHubModal';
 import { AdventureGameView } from './components/AdventureGameView';
+import { InteractiveQuizView } from './components/InteractiveQuizView';
 import { RoomState, Question, LeaderboardEntry } from './types/zakat';
 import { soundEffects } from './utils/soundEffects';
-import { Play, Users, BookOpen, Calculator, Sparkles, Trophy, GraduationCap, Radio, ArrowRight } from 'lucide-react';
+import { Play, Users, BookOpen, Calculator, Sparkles, Trophy, GraduationCap, Radio, ArrowRight, Video } from 'lucide-react';
 
 export default function App() {
   // Player Profile State
@@ -21,7 +22,7 @@ export default function App() {
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
 
   // App Screen Mode State
-  const [gameMode, setGameMode] = useState<'landing' | 'solo' | 'lobby' | 'multiplayer' | 'adventure_solo' | 'adventure_multiplayer'>('landing');
+  const [gameMode, setGameMode] = useState<'landing' | 'solo' | 'lobby' | 'multiplayer' | 'adventure_solo' | 'adventure_multiplayer' | 'interactive_quiz'>('landing');
 
   // Multiplayer Socket State
   const [roomCodeInput, setRoomCodeInput] = useState<string>('');
@@ -110,6 +111,8 @@ export default function App() {
             setCurrentQuestion(payload.currentQuestion);
             if (payload.room.gameType === 'adventure') {
               setGameMode('adventure_multiplayer');
+            } else if (payload.room.gameType === 'interactive_quiz') {
+              setGameMode('interactive_quiz');
             } else {
               setGameMode('multiplayer');
             }
@@ -428,7 +431,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* 4 MAIN MODE SELECTORS */}
+            {/* 5 MAIN MODE SELECTORS */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               
               {/* MODE 1: JUTAWAN ZAKAT (KUIS) */}
@@ -537,14 +540,50 @@ export default function App() {
                 </div>
               </div>
 
-              {/* MODE 4: MODE BELAJAR (KAMUS, MATERI, SIMULATOR) */}
-              <div className="bg-[#FDFCF0] border-2 border-[#3D405B] rounded-3xl p-5 shadow-[4px_4px_0px_#3D405B] space-y-3 hover:border-[#E07A5F] transition-all flex flex-col justify-between">
+              {/* MODE 4: INTERACTIVE QUIZ */}
+              <div className="bg-[#FDFCF0] border-2 border-[#3D405B] rounded-3xl p-5 shadow-[4px_4px_0px_#3D405B] space-y-3 hover:border-[#E07A5F] transition-all flex flex-col justify-between md:col-span-2">
+                <div className="space-y-2">
+                  <div className="w-10 h-10 bg-purple-500 text-white border-2 border-[#3D405B] rounded-2xl flex items-center justify-center text-2xl shadow-[2px_2px_0px_#3D405B]">
+                    <Video size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-black text-[#3D405B]">4. Kuis Zakat Interaktif (AR)</h3>
+                    <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-purple-300 text-[#3D405B] border border-[#3D405B] inline-block mt-0.5">
+                      Gunakan Tanganmu!
+                    </span>
+                    <p className="text-xs text-[#3D405B]/80 leading-relaxed font-semibold mt-1.5">
+                      Mainkan kuis zakat dengan kamera. Tembak jawaban yang benar dengan kepalan tangan!
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-2 mt-2">
+                  <button
+                    onClick={() => {
+                      soundEffects.playClick();
+                      setGameMode('interactive_quiz');
+                    }}
+                    className="flex-1 py-2.5 bg-purple-400 hover:bg-purple-300 text-[#3D405B] font-black text-[10px] rounded-xl border-2 border-[#3D405B] shadow-[2px_2px_0px_#3D405B] flex items-center justify-center gap-1 transition-all"
+                  >
+                    <Play className="w-3 h-3 fill-[#3D405B]" /> MAIN SOLO
+                  </button>
+                  <button
+                    onClick={() => handleCreateRoom('interactive_quiz')}
+                    className="flex-1 py-2.5 bg-[#F2CC8F] hover:bg-purple-400 text-[#3D405B] font-black text-[10px] rounded-xl border-2 border-[#3D405B] shadow-[2px_2px_0px_#3D405B] flex items-center justify-center gap-1 transition-all"
+                  >
+                    <Users className="w-3 h-3" /> BUAT SERVER
+                  </button>
+                </div>
+              </div>
+
+              {/* MODE 5: MODE BELAJAR (KAMUS, MATERI, SIMULATOR) */}
+              <div className="bg-[#FDFCF0] border-2 border-[#3D405B] rounded-3xl p-5 shadow-[4px_4px_0px_#3D405B] space-y-3 hover:border-[#E07A5F] transition-all flex flex-col justify-between md:col-span-2">
                 <div className="space-y-2">
                   <div className="w-10 h-10 bg-[#3D405B] text-white border-2 border-[#3D405B] rounded-2xl flex items-center justify-center text-2xl shadow-[2px_2px_0px_#3D405B]">
                     📚
                   </div>
                   <div>
-                    <h3 className="text-base font-black text-[#3D405B]">4. Mode Belajar</h3>
+                    <h3 className="text-base font-black text-[#3D405B]">5. Mode Belajar</h3>
                     <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-[#E07A5F] text-white border border-[#3D405B] inline-block mt-0.5">
                       Pusat Edukasi Zakat
                     </span>
@@ -761,6 +800,21 @@ export default function App() {
               setGameMode('landing');
               setCurrentRoom(null);
             }}
+          />
+        )}
+
+        {/* SCREEN 7: INTERACTIVE QUIZ */}
+        {gameMode === 'interactive_quiz' && (
+          <InteractiveQuizView 
+            isMultiplayer={currentRoom?.gameType === 'interactive_quiz'}
+            socket={socketRef.current}
+            roomId={currentRoom?.id}
+            playerId={currentUserId}
+            otherPlayers={currentRoom?.adventurePlayers || []}
+            onGoHome={() => {
+              setGameMode('landing');
+              setCurrentRoom(null);
+            }} 
           />
         )}
 

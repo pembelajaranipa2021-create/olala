@@ -323,7 +323,7 @@ export function AdventureGameView({
 
                   {/* Other Players (Multiplayer) */}
                   {isMultiplayer && otherPlayers.map((p: any) => {
-                    if (p.mapName === currentMap && p.id !== playerId) {
+                    if (p.mapName === currentMap && p.id !== playerId && p.pos) {
                       return (
                         <div key={p.id} className="absolute w-[20%] h-[20%] flex flex-col items-center justify-center transition-all opacity-80" style={{ left: `${p.pos.x*20}%`, top: `${p.pos.y*20}%` }}>
                           <span className="text-[8px] font-bold bg-white/80 px-1 rounded-sm border border-gray-400 mb-0.5">{p.name}</span>
