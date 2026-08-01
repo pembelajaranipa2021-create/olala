@@ -139,7 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Player Badge */}
           <div className="flex items-center gap-2 bg-[#FDFCF0] border-2 border-[#3D405B] px-2.5 py-1 rounded-xl shadow-[2px_2px_0px_#3D405B]">
-            <span className="text-xl leading-none">{playerAvatar}</span>
+            <img src={playerAvatar} alt="avatar" className="w-6 h-6 object-contain" />
             <div className="flex flex-col">
               <span className="text-xs font-extrabold text-[#3D405B] max-w-[80px] sm:max-w-[100px] truncate leading-tight">
                 {playerName}

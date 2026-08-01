@@ -12,7 +12,18 @@ interface RoomLobbyProps {
   onLeaveRoom?: () => void;
 }
 
-export const AVATAR_OPTIONS = ['👳‍♂️', '🧕', '🧒', '👧', '👑', '⭐', '🦁', '🦅', '🚀', '🌟'];
+export const AVATAR_OPTIONS = [
+  'https://lh3.googleusercontent.com/d/1HKwN57J25Ny7DquzSu9ItbLPnTyIGjpE',
+  'https://lh3.googleusercontent.com/d/1NHdyVcEPAmZEZmjBQiwI7f5aQ5uGYrYP',
+  'https://lh3.googleusercontent.com/d/17UFPWhUkW4OtXQRUkQ8Vv53QE4j01qMx',
+  'https://lh3.googleusercontent.com/d/1NuD_aym1rDpvj_0vz9zP4dHr6nEMKiOq',
+  'https://lh3.googleusercontent.com/d/1KmwJ1gGdkB_fV9MvIe5NuMTGgR3mVvYj',
+  'https://lh3.googleusercontent.com/d/12Q8tB0hWMn0Zy1gvLo6v_sH-0yduZKR7',
+  'https://lh3.googleusercontent.com/d/1sbtdj6rxeLAemeEiL8Y70bUBq6XUXYxN',
+  'https://lh3.googleusercontent.com/d/1UnvzdBfbTsgk3aKjWn-G4_sZT3Vj9SBQ',
+  'https://lh3.googleusercontent.com/d/1Zr6jJwXHprZhdtIwK2lEz9Doc2XlaiHa',
+  'https://lh3.googleusercontent.com/d/1PVexU5IamGUOX64x5hvin5ENCmSTWp_S'
+];
 
 export const RoomLobby: React.FC<RoomLobbyProps> = ({
   room,
@@ -122,8 +133,8 @@ export const RoomLobby: React.FC<RoomLobbyProps> = ({
                   }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <span className="text-2xl p-1 bg-[#F4F1DE] rounded-xl border border-[#3D405B]">
-                      {player.avatar}
+                    <span className="p-1 bg-[#F4F1DE] rounded-xl border border-[#3D405B]">
+                      <img src={player.avatar} alt="avatar" className="w-8 h-8 object-contain" />
                     </span>
                     <div className="min-w-0">
                       <div className="text-xs font-black text-[#3D405B] truncate flex items-center gap-1">
@@ -204,7 +215,7 @@ export const RoomLobby: React.FC<RoomLobbyProps> = ({
               >
                 {msg.type !== 'system' && (
                   <div className="font-black text-[#E07A5F] text-[10px] flex items-center gap-1">
-                    <span>{msg.avatar || '🧒'}</span> {msg.sender}:
+                    {msg.avatar ? <img src={msg.avatar} alt="avatar" className="w-3 h-3 object-contain inline-block" /> : null} {msg.sender}:
                   </div>
                 )}
                 <div className="mt-0.5 font-semibold">{msg.text}</div>

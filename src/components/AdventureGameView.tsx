@@ -4,35 +4,120 @@ import { Home, ShoppingCart, ChevronRight, Package, Heart, Shield, Award, Crown,
 
 const PRICES = { rice: 15000, gold: 1200000 };
 
+const BUILDING_IMAGES = [
+  'https://lh3.googleusercontent.com/d/16aWAi0vcYxVCt2u4rs5tj5IeQltyrlnS',
+  'https://lh3.googleusercontent.com/d/1G0oTCnDvi8UqBZJkTmeXVjslXJPgqw9e',
+  'https://lh3.googleusercontent.com/d/1GL57YP-dT7QDcBI1b-q4rKoDu0ltVqyH',
+  'https://lh3.googleusercontent.com/d/1MKAHRAEQKTd5NCPxwzCcz1kOPdFWFc3S',
+  'https://lh3.googleusercontent.com/d/1SujXLePyPZPBmyUMej6gn4_-8OIVkNRG',
+  'https://lh3.googleusercontent.com/d/1TZrdKOKrkWta6JEZ5DLukqojDBaVX6sZ',
+  'https://lh3.googleusercontent.com/d/1ZrQtcW2J_nj5TYSFigBXebYc8b34g1vc',
+  'https://lh3.googleusercontent.com/d/1aI478_vANn0NLdnSujonPZB7ttv4NhWK',
+  'https://lh3.googleusercontent.com/d/1d0G08TUigM9fzBsuDgm0hQn-R5G37_gx',
+  'https://lh3.googleusercontent.com/d/1eZjcFo0YAcUkxtSd9sunka7DLlTcVNjF',
+  'https://lh3.googleusercontent.com/d/1sFpdCNtAA-OfXrKGGzgM2iYX_1fOo8Ng',
+  'https://lh3.googleusercontent.com/d/1sKX9Jru7jxxooRAeo333V5BQ5ICS9flX'
+];
+
 const ALL_MAPS = [
-  { name: 'Dusun Hijau', icon: 'leaf', color: 'emerald', npcs: [
-      { id: 'pak_haji', name: 'Haji Sulaiman', x: 1, y: 1, type: 'MUZAKKI', quest: 'TANI' },
-      { id: 'yatim_piatu', name: 'Rumah Yatim', x: 4, y: 3, type: 'MUSTAHIK', cost: 2500000 }
-  ]},
-  { name: 'Pasar Rakyat', icon: 'shopping-bag', color: 'amber', npcs: [
-      { id: 'pedagang', name: 'Saudagar Malik', x: 3, y: 1, type: 'MUZAKKI', quest: 'DAGANG' },
-      { id: 'kuli_panggul', name: 'Pak Darmono', x: 1, y: 4, type: 'MUSTAHIK', cost: 4000000 }
-  ]},
-  { name: 'Pesisir Karang', icon: 'anchor', color: 'blue', npcs: [
-      { id: 'juragan_kapal', name: 'Kapten Idris', x: 0, y: 2, type: 'MUZAKKI', quest: 'NELAYAN' },
-      { id: 'janda_nelayan', name: 'Ibu Fatimah', x: 3, y: 4, type: 'MUSTAHIK', cost: 3500000 }
-  ]},
-  { name: 'Lembah Subur', icon: 'wheat', color: 'lime', npcs: [
-      { id: 'peternak', name: 'Pak Bejo', x: 2, y: 0, type: 'MUZAKKI', quest: 'TERNAK' },
-      { id: 'sekolah_desa', name: 'Guru Madrasah', x: 4, y: 4, type: 'MUSTAHIK', cost: 5000000 }
-  ]},
-  { name: 'Kota Niaga', icon: 'globe', color: 'indigo', npcs: [
-      { id: 'toko_emas', name: 'Nyonya Tan', x: 4, y: 1, type: 'MUZAKKI', quest: 'EMAS_MURNI' },
-      { id: 'panti_jompo', name: 'Wisma Lansia', x: 0, y: 4, type: 'MUSTAHIK', cost: 6000000 }
-  ]},
-  { name: 'Hutan Damai', icon: 'tree-pine', color: 'emerald', npcs: [
-      { id: 'pencari_madu', name: 'Kang Asep', x: 1, y: 3, type: 'MUZAKKI', quest: 'MADU' },
-      { id: 'pengungsi', name: 'Kamp Pengungsi', x: 3, y: 0, type: 'MUSTAHIK', cost: 4500000 }
-  ]},
-  { name: 'Pusat Kerajaan', icon: 'crown', color: 'purple', npcs: [
-      { id: 'menteri', name: 'Patih Kerajaan', x: 2, y: 2, type: 'MUZAKKI', quest: 'NEGARA' },
-      { id: 'masjid_agung', name: 'Marbot Masjid', x: 0, y: 0, type: 'MUSTAHIK', cost: 10000000 }
-  ]}
+  { name: 'Dusun Hijau', icon: 'leaf', color: 'emerald', 
+    npcs: [
+      { id: 'pak_haji', name: 'Haji Sulaiman', x: 1, y: 2, type: 'MUZAKKI', quest: 'TANI', avatar: 'https://lh3.googleusercontent.com/d/1r8vZJoaG755ifkA_qtjomz_pHA_QxW2U' },
+      { id: 'yatim_piatu', name: 'Pengurus Yatim', x: 3, y: 2, type: 'MUSTAHIK', cost: 2500000, avatar: 'https://lh3.googleusercontent.com/d/1BELS56vArZHbdCd5V_at9CRNC_mnSIoe' }
+    ],
+    buildings: [
+      { id: 'b1', x: 1, y: 1, image: BUILDING_IMAGES[0] }, // Next to NPC 1
+      { id: 'b2', x: 3, y: 1, image: BUILDING_IMAGES[1] }, // Next to NPC 2
+      { id: 'b3', x: 1, y: 3, image: BUILDING_IMAGES[2] },
+      { id: 'b4', x: 3, y: 3, image: BUILDING_IMAGES[3] },
+      { id: 'b5', x: 0, y: 1, image: BUILDING_IMAGES[4] },
+      { id: 'b6', x: 4, y: 1, image: BUILDING_IMAGES[5] }
+    ]
+  },
+  { name: 'Pasar Rakyat', icon: 'shopping-bag', color: 'amber', 
+    npcs: [
+      { id: 'pedagang', name: 'Saudagar Malik', x: 1, y: 2, type: 'MUZAKKI', quest: 'DAGANG', avatar: 'https://lh3.googleusercontent.com/d/1J4VdU40e53G0GhH1XBbe9jK45WBnJpGt' },
+      { id: 'kuli_panggul', name: 'Pak Darmono', x: 3, y: 2, type: 'MUSTAHIK', cost: 4000000, avatar: 'https://lh3.googleusercontent.com/d/1JcgTAjDbZuFf_XdbqbpzAZAEitoWi-Xn' }
+    ],
+    buildings: [
+      { id: 'b1', x: 1, y: 1, image: BUILDING_IMAGES[6] },
+      { id: 'b2', x: 3, y: 1, image: BUILDING_IMAGES[7] },
+      { id: 'b3', x: 1, y: 3, image: BUILDING_IMAGES[8] },
+      { id: 'b4', x: 3, y: 3, image: BUILDING_IMAGES[9] },
+      { id: 'b5', x: 0, y: 1, image: BUILDING_IMAGES[10] },
+      { id: 'b6', x: 4, y: 1, image: BUILDING_IMAGES[11] }
+    ]
+  },
+  { name: 'Pesisir Karang', icon: 'anchor', color: 'blue', 
+    npcs: [
+      { id: 'juragan_kapal', name: 'Kapten Idris', x: 1, y: 2, type: 'MUZAKKI', quest: 'NELAYAN', avatar: 'https://lh3.googleusercontent.com/d/1VsL8lYNIIs-EWl2iQnELlNbCzsA2kg1k' },
+      { id: 'janda_nelayan', name: 'Ibu Fatimah', x: 3, y: 2, type: 'MUSTAHIK', cost: 3500000, avatar: 'https://lh3.googleusercontent.com/d/1W1p5juBOk83DTxshzkl6DlgMaroffLbO' }
+    ],
+    buildings: [
+      { id: 'b1', x: 1, y: 1, image: BUILDING_IMAGES[5] },
+      { id: 'b2', x: 3, y: 1, image: BUILDING_IMAGES[4] },
+      { id: 'b3', x: 1, y: 3, image: BUILDING_IMAGES[3] },
+      { id: 'b4', x: 3, y: 3, image: BUILDING_IMAGES[2] },
+      { id: 'b5', x: 0, y: 1, image: BUILDING_IMAGES[1] },
+      { id: 'b6', x: 4, y: 1, image: BUILDING_IMAGES[0] }
+    ]
+  },
+  { name: 'Lembah Subur', icon: 'wheat', color: 'lime', 
+    npcs: [
+      { id: 'peternak', name: 'Pak Bejo', x: 1, y: 2, type: 'MUZAKKI', quest: 'TERNAK', avatar: 'https://lh3.googleusercontent.com/d/1fjSJlGGv_VgsBVNbTD5Sln11B_pGGgNO' },
+      { id: 'sekolah_desa', name: 'Guru Madrasah', x: 3, y: 2, type: 'MUSTAHIK', cost: 5000000, avatar: 'https://lh3.googleusercontent.com/d/1qS1exDLo81Qnz7u3nNg-e-KCDkvXS7mE' }
+    ],
+    buildings: [
+      { id: 'b1', x: 1, y: 1, image: BUILDING_IMAGES[11] },
+      { id: 'b2', x: 3, y: 1, image: BUILDING_IMAGES[10] },
+      { id: 'b3', x: 1, y: 3, image: BUILDING_IMAGES[9] },
+      { id: 'b4', x: 3, y: 3, image: BUILDING_IMAGES[8] },
+      { id: 'b5', x: 0, y: 1, image: BUILDING_IMAGES[7] },
+      { id: 'b6', x: 4, y: 1, image: BUILDING_IMAGES[6] }
+    ]
+  },
+  { name: 'Kota Niaga', icon: 'globe', color: 'indigo', 
+    npcs: [
+      { id: 'toko_emas', name: 'Nyonya Tan', x: 1, y: 2, type: 'MUZAKKI', quest: 'EMAS_MURNI', avatar: 'https://lh3.googleusercontent.com/d/19RcdKB--1tcxtDq_NVzYS8zAjC47tsaF' },
+      { id: 'panti_jompo', name: 'Pengurus Lansia', x: 3, y: 2, type: 'MUSTAHIK', cost: 6000000, avatar: 'https://lh3.googleusercontent.com/d/1x_T1aLP_KZkXnbXB0_p1ujLhtvlYA11y' }
+    ],
+    buildings: [
+      { id: 'b1', x: 1, y: 1, image: BUILDING_IMAGES[2] },
+      { id: 'b2', x: 3, y: 1, image: BUILDING_IMAGES[3] },
+      { id: 'b3', x: 1, y: 3, image: BUILDING_IMAGES[4] },
+      { id: 'b4', x: 3, y: 3, image: BUILDING_IMAGES[5] },
+      { id: 'b5', x: 0, y: 1, image: BUILDING_IMAGES[6] },
+      { id: 'b6', x: 4, y: 1, image: BUILDING_IMAGES[7] }
+    ]
+  },
+  { name: 'Hutan Damai', icon: 'tree-pine', color: 'emerald', 
+    npcs: [
+      { id: 'pencari_madu', name: 'Kang Asep', x: 1, y: 2, type: 'MUZAKKI', quest: 'MADU', avatar: 'https://lh3.googleusercontent.com/d/19RcdKB--1tcxtDq_NVzYS8zAjC47tsaF' },
+      { id: 'pengungsi', name: 'Ketua Kamp', x: 3, y: 2, type: 'MUSTAHIK', cost: 4500000, avatar: 'https://lh3.googleusercontent.com/d/1BELS56vArZHbdCd5V_at9CRNC_mnSIoe' }
+    ],
+    buildings: [
+      { id: 'b1', x: 1, y: 1, image: BUILDING_IMAGES[8] },
+      { id: 'b2', x: 3, y: 1, image: BUILDING_IMAGES[9] },
+      { id: 'b3', x: 1, y: 3, image: BUILDING_IMAGES[10] },
+      { id: 'b4', x: 3, y: 3, image: BUILDING_IMAGES[11] },
+      { id: 'b5', x: 0, y: 1, image: BUILDING_IMAGES[0] },
+      { id: 'b6', x: 4, y: 1, image: BUILDING_IMAGES[1] }
+    ]
+  },
+  { name: 'Pusat Kerajaan', icon: 'crown', color: 'purple', 
+    npcs: [
+      { id: 'menteri', name: 'Patih Kerajaan', x: 1, y: 2, type: 'MUZAKKI', quest: 'NEGARA', avatar: 'https://lh3.googleusercontent.com/d/1J4VdU40e53G0GhH1XBbe9jK45WBnJpGt' },
+      { id: 'masjid_agung', name: 'Marbot Masjid', x: 3, y: 2, type: 'MUSTAHIK', cost: 10000000, avatar: 'https://lh3.googleusercontent.com/d/1JcgTAjDbZuFf_XdbqbpzAZAEitoWi-Xn' }
+    ],
+    buildings: [
+      { id: 'b1', x: 1, y: 1, image: BUILDING_IMAGES[11] },
+      { id: 'b2', x: 3, y: 1, image: BUILDING_IMAGES[2] },
+      { id: 'b3', x: 1, y: 3, image: BUILDING_IMAGES[3] },
+      { id: 'b4', x: 3, y: 3, image: BUILDING_IMAGES[4] },
+      { id: 'b5', x: 0, y: 1, image: BUILDING_IMAGES[5] },
+      { id: 'b6', x: 4, y: 1, image: BUILDING_IMAGES[6] }
+    ]
+  }
 ];
 
 const QUESTS = {
@@ -252,7 +337,7 @@ export function AdventureGameView({
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col gap-4 relative z-10 text-[#3D405B] font-sans">
+    <div className="w-full max-w-6xl mx-auto flex flex-col gap-4 relative z-10 text-[#3D405B] font-sans">
       
       {/* Header */}
       {gameState !== 'START' && (
@@ -305,18 +390,41 @@ export function AdventureGameView({
       {gameState === 'PLAYING' && (
         <div className="flex flex-col lg:flex-row gap-6">
           <div className="flex-1 flex flex-col items-center">
-              <div className="relative w-full max-w-md aspect-square bg-emerald-50 border-4 border-[#3D405B] rounded-3xl shadow-[6px_6px_0px_#3D405B] grid grid-cols-5 grid-rows-5 overflow-hidden">
-                  {/* Grid Cells */}
-                  {Array.from({length:25}).map((_, i) => <div key={i} className="border border-[#3D405B]/10"></div>)}
+              <div className="relative w-full max-w-3xl xl:max-w-4xl aspect-square bg-[#81B29A] border-4 border-[#3D405B] rounded-3xl shadow-[6px_6px_0px_#3D405B] overflow-hidden">
+                  {/* Decorative Forest/Land pattern */}
+                  <div className="absolute inset-0 bg-[#81B29A]" style={{ backgroundImage: 'radial-gradient(circle at 20% 30%, #3D405B 2px, transparent 2px), radial-gradient(circle at 70% 60%, #3D405B 2px, transparent 2px), radial-gradient(circle at 40% 80%, #3D405B 2px, transparent 2px), radial-gradient(circle at 80% 20%, #3D405B 2px, transparent 2px)', backgroundSize: '100px 100px', opacity: 0.1 }}></div>
                   
+                  {/* Roads */}
+                  <div className="absolute top-[30%] left-0 right-0 h-[40%] bg-[#F4F1DE]/40 border-y-4 border-[#3D405B]/10 rounded-lg"></div>
+                  <div className="absolute left-[30%] top-0 bottom-0 w-[40%] bg-[#F4F1DE]/40 border-x-4 border-[#3D405B]/10 rounded-lg"></div>
+
+                  {/* Trees */}
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div key={`tree-${i}`} className="absolute text-2xl md:text-4xl opacity-80" style={{ left: `${(i * 37) % 80 + 10}%`, top: `${(i * 23) % 80 + 10}%`, pointerEvents: 'none' }}>
+                      🌲
+                    </div>
+                  ))}
+
+                  {/* Buildings */}
+                  {activeMaps.find(m => m.name === currentMap)?.buildings?.map((b: any) => (
+                    <div key={b.id} className="absolute w-[20%] h-[20%] flex items-center justify-center pointer-events-none" style={{ left: `${b.x*20}%`, top: `${b.y*20}%` }}>
+                        <img src={b.image} alt="building" className="w-24 h-24 md:w-32 md:h-32 object-contain opacity-90 drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]" />
+                    </div>
+                  ))}
+
                   {/* NPCs */}
                   {activeMaps.find(m => m.name === currentMap)?.npcs.map((npc: any) => {
                       const isDone = completedThisMonth.includes(`${npc.id}_${month}`);
                       return (
-                        <div key={npc.id} className={`absolute w-[20%] h-[20%] flex items-center justify-center transition-all ${isDone ? 'opacity-40' : 'animate-pulse'}`} style={{ left: `${npc.x*20}%`, top: `${npc.y*20}%` }}>
-                           <div className={`w-8 h-8 rounded-lg border-2 border-[#3D405B] shadow-[2px_2px_0px_#3D405B] flex items-center justify-center text-white ${getSpriteClass(npc.type)}`}>
-                             {npc.type === 'MUZAKKI' ? <Package size={16}/> : <Heart size={16}/>}
-                           </div>
+                        <div key={npc.id} className={`absolute w-[20%] h-[20%] flex flex-col items-center justify-center transition-all ${isDone ? 'opacity-40' : 'animate-pulse'}`} style={{ left: `${npc.x*20}%`, top: `${npc.y*20}%` }}>
+                           <span className="text-[10px] font-black bg-white/90 px-1.5 py-0.5 rounded-md border-2 border-[#3D405B] mb-1 text-center shadow-sm z-10 hidden md:block">{npc.name}</span>
+                           {npc.avatar ? (
+                             <img src={npc.avatar} alt="avatar" className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] hover:scale-110 transition-transform" />
+                           ) : (
+                             <div className={`relative w-10 h-10 md:w-12 md:h-12 rounded-xl border-2 border-[#3D405B] shadow-[3px_3px_0px_#3D405B] flex items-center justify-center ${getSpriteClass(npc.type)} overflow-hidden`}>
+                               {npc.type === 'MUZAKKI' ? <Package size={20} className="text-white"/> : <Heart size={20} className="text-white"/>}
+                             </div>
+                           )}
                         </div>
                       )
                   })}
@@ -326,8 +434,8 @@ export function AdventureGameView({
                     if (p.mapName === currentMap && p.id !== playerId && p.pos) {
                       return (
                         <div key={p.id} className="absolute w-[20%] h-[20%] flex flex-col items-center justify-center transition-all opacity-80" style={{ left: `${p.pos.x*20}%`, top: `${p.pos.y*20}%` }}>
-                          <span className="text-[8px] font-bold bg-white/80 px-1 rounded-sm border border-gray-400 mb-0.5">{p.name}</span>
-                          <div className="text-xl">{p.avatar}</div>
+                          <span className="text-[10px] font-black bg-white/90 px-1.5 py-0.5 rounded-md border-2 border-[#3D405B] mb-1 z-10 shadow-sm">{p.name}</span>
+                          <img src={p.avatar} alt="avatar" className="w-12 h-12 md:w-16 md:h-16 object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)] hover:scale-110 transition-transform" />
                         </div>
                       );
                     }
@@ -336,9 +444,8 @@ export function AdventureGameView({
 
                   {/* Player */}
                   <div className="absolute w-[20%] h-[20%] flex flex-col items-center justify-center transition-all z-20" style={{ left: `${playerPos.x*20}%`, top: `${playerPos.y*20}%` }}>
-                      <div className="w-10 h-10 rounded-full border-2 border-[#3D405B] shadow-[2px_2px_0px_#3D405B] bg-[#F2CC8F] flex items-center justify-center text-2xl">
-                         {playerAvatar}
-                      </div>
+                      <span className="text-[10px] font-black bg-[#F2CC8F]/90 px-1.5 py-0.5 rounded-md border-2 border-[#3D405B] mb-1 z-10 shadow-sm">{playerName || 'Kamu'}</span>
+                      <img src={playerAvatar} alt="avatar" className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] hover:scale-110 transition-transform z-20" />
                   </div>
               </div>
               
@@ -416,9 +523,13 @@ export function AdventureGameView({
                  const assistance = LEVELS[level].assistance;
                  return (
                    <>
-                      <div className={`w-16 h-16 ${isMuzakki ? 'bg-[#F2CC8F]' : 'bg-[#E07A5F]'} text-[#3D405B] border-2 border-[#3D405B] rounded-2xl flex items-center justify-center mx-auto mb-4`}>
-                        {isMuzakki ? <Package size={30} /> : <Heart size={30} />}
-                      </div>
+                      {npc.avatar ? (
+                        <img src={npc.avatar} alt="avatar" className="w-24 h-24 md:w-32 md:h-32 object-contain mx-auto mb-4 drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]" />
+                      ) : (
+                        <div className={`relative w-20 h-20 ${isMuzakki ? 'bg-[#F2CC8F]' : 'bg-[#E07A5F]'} text-[#3D405B] border-2 border-[#3D405B] rounded-2xl flex items-center justify-center mx-auto mb-4 overflow-hidden`}>
+                          {isMuzakki ? <Package size={30} /> : <Heart size={30} />}
+                        </div>
+                      )}
                       <h3 className="text-xl font-black text-[#3D405B]">{npc.name}</h3>
                       <p className="text-sm text-[#3D405B]/80 mt-2 font-bold mb-6">"{isMuzakki ? quest?.dialog : `Membutuhkan bantuan modal untuk mandiri: Rp ${npc.cost.toLocaleString()}`}"</p>
                       

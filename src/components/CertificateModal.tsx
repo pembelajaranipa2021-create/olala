@@ -77,7 +77,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           <div className="py-3 border-y-2 border-[#3D405B]/20 max-w-md mx-auto space-y-2">
             <p className="text-xs text-[#3D405B] font-bold">Diberikan Kepada Pahlawan Zakat:</p>
             <div className="text-2xl sm:text-3xl font-black text-[#3D405B] font-serif flex items-center justify-center gap-2">
-              <span>{playerAvatar}</span>
+              <img src={playerAvatar} alt="avatar" className="w-10 h-10 object-contain inline-block" />
               <span className="text-[#E07A5F] underline decoration-[#3D405B] decoration-wavy underline-offset-4">
                 {playerName}
               </span>

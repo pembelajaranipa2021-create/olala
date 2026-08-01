@@ -82,8 +82,8 @@ export const LeaderboardModal: React.FC<LeaderboardModalProps> = ({
                       )}
                     </div>
 
-                    <span className="text-2xl bg-emerald-950 p-1 rounded-xl border border-emerald-800">
-                      {entry.avatar}
+                    <span className="bg-emerald-950 p-1 rounded-xl border border-emerald-800">
+                      <img src={entry.avatar} alt="avatar" className="w-8 h-8 object-contain" />
                     </span>
 
                     <div>

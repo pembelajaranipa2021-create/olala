@@ -239,7 +239,7 @@ export const MultiplayerGameView: React.FC<MultiplayerGameViewProps> = ({
                 >
                   <div className="flex items-center gap-2 truncate">
                     <span className="font-black text-[#E07A5F] font-mono w-4">#{entry.rank}</span>
-                    <span>{entry.avatar}</span>
+                    <img src={entry.avatar} alt="avatar" className="w-5 h-5 object-contain" />
                     <span className="truncate text-[#3D405B]">{entry.name}</span>
                   </div>
                   <span className="font-mono font-black text-[#E07A5F] text-xs">

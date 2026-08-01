@@ -546,7 +546,7 @@ export function InteractiveQuizView({
               {otherPlayers.filter(p => p.id !== playerId).map(p => (
                 <div key={p.id} className={`flex items-center justify-between p-2 rounded-lg ${p.isEliminated ? 'bg-red-900/50' : 'bg-slate-800'}`}>
                   <div className="flex items-center gap-2">
-                    <span className="text-xl">{p.avatar}</span>
+                    <img src={p.avatar} alt="avatar" className="w-6 h-6 object-contain" />
                     <div className="flex flex-col">
                       <span className={`text-sm font-bold ${p.isEliminated ? 'text-red-300 line-through' : 'text-white'}`}>{p.name}</span>
                       <span className="text-[10px] text-gray-400">Soal {p.currentQIdx !== undefined ? p.currentQIdx + 1 : 1}/15</span>
